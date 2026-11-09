@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USMC 251st Birthday Digital Signage</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: #0b0c10;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #fff;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 6px solid #C5A059;
+}
+
+header {
+    flex: 0 0 auto;
+    background: linear-gradient(135deg, #7b0000 0%, #4a0000 100%);
+    padding: 20px 40px;
+    text-align: center;
+    border-bottom: 4px solid #C5A059;
+    box-shadow: 0 4px 15px rgba(0,0,0,.7);
+    z-index: 2;
+}
+
+.est-tag {
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #C5A059;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-size: 3.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0,0,0,.8);
+}
+
+main {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: radial-gradient(ellipse at center, #251a16 0%, #0b0c10 75%);
+}
+
+/* Actual uploaded Eagle, Globe and Anchor image */
+.ega-watermark {
+    position: absolute;
+    z-index: -1;
+    width: min(68vh, 650px, 70vw);
+    height: min(68vh, 650px, 70vw);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    opacity: 0.30;
+    pointer-events: none;
+    filter: drop-shadow(0 0 18px rgba(197,160,89,.25));
+}
+
+.badge-container {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 25px;
+    animation: pulseGlow 3s infinite alternate;
+}
+
+.year-number {
+    font-size: 7rem;
+    font-weight: 900;
+    color: #C5A059;
+    line-height: 1;
+    text-shadow: 0 0 25px rgba(197,160,89,.5);
+}
+
+.year-label {
+    font-size: 1.5rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #cfcfcf;
+}
+
+.card-slider {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 1100px;
+    min-height: 150px;
+    background: rgba(20,20,25,.91);
+    border-left: 6px solid #C5A059;
+    border-right: 6px solid #C5A059;
+    padding: 25px 40px;
+    border-radius: 4px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-content {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    color: #f1f1f1;
+    opacity: 0;
+    transition: opacity .8s ease-in-out;
+    position: absolute;
+    max-width: 950px;
+    padding: 10px;
+}
+
+.slide-content.active {
+    opacity: 1;
+    position: relative;
+}
+
+.highlight-gold { color: #C5A059; font-weight: bold; }
+
+footer {
+    flex: 0 0 auto;
+    background: #050507;
+    padding: 15px 20px;
+    border-top: 2px solid #C5A059;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    color: #a0a0a0;
+    z-index: 2;
+}
+
+.motto {
+    color: #C5A059;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(197,160,89,.2)); }
+    100% { transform: scale(1.02); filter: drop-shadow(0 0 15px rgba(197,160,89,.6)); }
+}
+
+@media (max-width: 1200px) {
+    h1 { font-size: 2.4rem; }
+    .year-number { font-size: 6rem; }
+    .slide-content { font-size: 1.5rem; }
+}
+
+@media (max-width: 700px) {
+    header { padding: 14px 18px; }
+    h1 { font-size: 1.5rem; }
+    .est-tag { font-size: .8rem; letter-spacing: 2px; }
+    .year-number { font-size: 4rem; }
+    .year-label { font-size: 1rem; letter-spacing: 3px; }
+    .slide-content { font-size: 1.1rem; }
+    footer { font-size: .7rem; }
+    .ega-watermark { width: 85vw; height: 85vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .badge-container { animation: none; }
+    .slide-content { transition: none; }
+}
+</style>
+</head>
+<body>
+<header>
+    <div class="est-tag">Established November 10, 1775 • Tun Tavern, Philadelphia</div>
+    <h1>Celebrating 251 Years of Honor, Courage, and Commitment</h1>
+</header>
+
+<main>
+    <img class="ega-watermark" src="USMC-EGA-transparent.png"
+         alt="" aria-hidden="true">
+
+    <div class="badge-container">
+        <div class="year-number">251</div>
+        <div class="year-label">Years of the United States Marine Corps</div>
+    </div>
+
+    <div class="card-slider">
+        <div class="slide-content active">"For <span class="highlight-gold">251 years</span>, the United States Marine Corps has been our Nation's premier expeditionary force in readiness."</div>
+        <div class="slide-content">"Born from the sea and forged in the fires of conflict, Marines have fought, and won, in battles all over the world."</div>
+        <div class="slide-content">"The high name of distinction and soldierly repute we received from those who preceded us..."</div>
+        <div class="slide-content">"Honor, Courage, and Commitment — the core values that define every Marine past and present."</div>
+    </div>
+</main>
+
+<footer>
+    <div>UNITED STATES MARINE CORPS BIRTHDAY</div>
+    <div class="motto">SEMPER FIDELIS</div>
+    <div>HONORING ALL WHO SERVED</div>
+</footer>
+
+<script>
+const slides = document.querySelectorAll(".slide-content");
+let currentSlide = 0;
+
+function nextSlide() {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active");
+}
+
+setInterval(nextSlide, 6000);
+</script>
+</body>
+</html>
